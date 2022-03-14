@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lara_flu_quizapp/models/QuizDash.dart';
+import 'package:lara_flu_quizapp/pages/StartQuizPage.dart';
 import 'package:lara_flu_quizapp/scope_models/AppModel.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -104,6 +105,10 @@ class _DashboardPageState extends State<DashboardPage> {
                 onTap: (){
                   if(isResultEmpty){
                     //Start Quiz
+                    AppModel model = ScopedModel.of<AppModel>(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                      return StartQuizPage(_quizzes[index].id, _quizzes[index].quizName, model);
+                    }));
                   }else{
                     //View Quiz Result
                   }
